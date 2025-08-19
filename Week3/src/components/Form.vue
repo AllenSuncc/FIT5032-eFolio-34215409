@@ -5,7 +5,6 @@
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
-            <!-- Username -->
             <div class="col-md-6">
               <label for="username" class="form-label">Username</label>
               <input 
@@ -15,8 +14,6 @@
                 v-model="formData.username"
               >
             </div>
-
-            <!-- Password -->
             <div class="col-md-6">
               <label for="password" class="form-label">Password</label>
               <input 
@@ -25,6 +22,22 @@
                 id="password" 
                 v-model="formData.password"
               >
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input" 
+                  id="isAustralian" 
+                  v-model="formData.isAustralian"
+                >
+                <label class="form-check-label" for="isAustralian">
+                  Australian Resident?
+                </label>
+              </div>
             </div>
           </div>
         </form>
@@ -38,9 +51,9 @@ import { reactive } from 'vue'
 
 const formData = reactive({
   username: '',
-  password: ''
+  password: '',
+  isAustralian: false
 })
-
 
 function submitForm() {
   console.log(formData)
