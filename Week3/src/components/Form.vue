@@ -5,8 +5,9 @@
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
 
+          <!-- 用户名 + 密码 -->
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-6 col-md-6">
               <label for="username" class="form-label">Username</label>
               <input 
                 type="text" 
@@ -15,7 +16,7 @@
                 v-model="formData.username"
               >
             </div>
-            <div class="col-md-6">
+            <div class="col-6 col-md-6">
               <label for="password" class="form-label">Password</label>
               <input 
                 type="password" 
@@ -26,9 +27,9 @@
             </div>
           </div>
 
-
+          <!-- Australian Resident? + Gender -->
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-6 col-md-6">
               <div class="form-check">
                 <input 
                   type="checkbox" 
@@ -41,7 +42,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-6 col-md-6">
               <label for="gender" class="form-label">Gender</label>
               <select 
                 class="form-select" 
@@ -56,7 +57,7 @@
             </div>
           </div>
 
-
+          <!-- Reason for joining -->
           <div class="mb-3">
             <label for="reason" class="form-label">Reason for joining</label>
             <textarea 
@@ -67,7 +68,7 @@
             ></textarea>
           </div>
 
-
+          <!-- 提交和清空按钮 -->
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button 
@@ -80,8 +81,9 @@
           </div>
         </form>
 
-        <div class="row mt-5" v-if="submittedCards.length">
-          <div class="d-flex flex-wrap justify-content-start">
+        <!-- 横向排列的用户信息卡片 -->
+        <div class="mt-5" v-if="submittedCards.length">
+          <div class="d-flex flex-wrap justify-content-center">
             <div 
               v-for="(card, index) in submittedCards" 
               :key="index" 
@@ -117,9 +119,7 @@ const formData = ref({
   reason: ''
 })
 
-
 const submittedCards = ref([])
-
 
 function submitForm() {
   submittedCards.value.push({
@@ -127,7 +127,6 @@ function submitForm() {
   })
   clearForm() 
 }
-
 
 function clearForm() {
   formData.value = {
