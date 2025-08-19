@@ -5,6 +5,7 @@
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
+            <!-- Username -->
             <div class="col-md-6 col-sm-6">
               <label for="username" class="form-label">Username</label>
               <input
@@ -20,6 +21,7 @@
               </div>
             </div>
 
+            <!-- Password -->
             <div class="col-md-6 col-sm-6">
               <label for="password" class="form-label">Password</label>
               <input
@@ -37,6 +39,7 @@
           </div>
 
           <div class="row mb-3">
+            <!-- Australian Resident -->
             <div class="col-6 col-md-6">
               <div class="form-check">
                 <input
@@ -44,12 +47,18 @@
                   class="form-check-input"
                   id="isAustralian"
                   v-model="formData.isAustralian"
+                  @change="validateResident"
                 />
                 <label class="form-check-label" for="isAustralian">
                   Australian Resident?
                 </label>
+                <div v-if="errors.isAustralian" class="text-danger">
+                  {{ errors.isAustralian }}
+                </div>
               </div>
             </div>
+
+            <!-- Gender -->
             <div class="col-6 col-md-6">
               <label for="gender" class="form-label">Gender</label>
               <select
@@ -68,7 +77,7 @@
             </div>
           </div>
 
-
+          <!-- Reason -->
           <div class="mb-3">
             <label for="reason" class="form-label">Reason for joining</label>
             <textarea
@@ -84,7 +93,7 @@
             </div>
           </div>
 
-
+          <!-- Buttons -->
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button
@@ -97,7 +106,7 @@
           </div>
         </form>
 
-
+        <!-- PrimeVue DataTable -->
         <div class="mt-5" v-if="submittedCards.length">
           <DataTable
             :value="submittedCards"
@@ -105,10 +114,7 @@
             tableStyle="min-width: 50rem"
           >
             <Column field="username" header="Username"></Column>
-            <Column field="password" header="Password">
-              <template #body="slotProps">
-              </template>
-            </Column>
+            <Column field="password" header="Password"></Column>
             <Column field="isAustralian" header="Australian Resident">
               <template #body="slotProps">
                 {{ slotProps.data.isAustralian ? "Yes" : "No" }}
@@ -142,9 +148,11 @@ const errors = ref({
   username: null,
   password: null,
   gender: null,
-  reason: null
+  reason: null,
+  isAustralian: null
 })
 
+// ✅ 验证 Username
 const validateName = (blur) => {
   if (formData.value.username.length < 3) {
     if (blur) errors.value.username = "Name must be at least 3 characters"
@@ -153,6 +161,7 @@ const validateName = (blur) => {
   }
 }
 
+// ✅ 验证 Password
 const validatePassword = (password) => {
   const minLength = 8
   const hasUppercase = /[A-Z]/.test(password)
@@ -175,6 +184,7 @@ const validatePassword = (password) => {
   }
 }
 
+// ✅ 验证 Gender
 const validateGender = () => {
   if (!formData.value.gender) {
     errors.value.gender = "Please select your gender"
@@ -183,6 +193,7 @@ const validateGender = () => {
   }
 }
 
+// ✅ 验证 Reason
 const validateReason = (blur) => {
   if (formData.value.reason.length < 5) {
     if (blur) errors.value.reason = "Reason must be at least 5 characters"
@@ -193,23 +204,36 @@ const validateReason = (blur) => {
   }
 }
 
+// ✅ 验证 Australian Resident
+const validateResident = () => {
+  if (!formData.value.isAustralian) {
+    errors.value.isAustralian = "You must be an Australian resident"
+  } else {
+    errors.value.isAustralian = null
+  }
+}
+
+// ✅ 提交表单
 function submitForm() {
   validateName(true)
   validatePassword(formData.value.password)
   validateGender()
   validateReason(true)
+  validateResident()
 
   if (
     !errors.value.username &&
     !errors.value.password &&
     !errors.value.gender &&
-    !errors.value.reason
+    !errors.value.reason &&
+    !errors.value.isAustralian
   ) {
     submittedCards.value.push({ ...formData.value })
     clearForm()
   }
 }
 
+// ✅ 清空表单
 function clearForm() {
   formData.value = {
     username: "",
@@ -222,7 +246,8 @@ function clearForm() {
     username: null,
     password: null,
     gender: null,
-    reason: null
+    reason: null,
+    isAustralian: null
   }
 }
 </script>
