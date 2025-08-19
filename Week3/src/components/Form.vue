@@ -26,6 +26,7 @@
             </div>
           </div>
 
+
           <div class="row mb-3">
             <div class="col-md-6">
               <div class="form-check">
@@ -54,6 +55,17 @@
               </select>
             </div>
           </div>
+
+
+          <div class="mb-3">
+            <label for="reason" class="form-label">Reason for joining</label>
+            <textarea 
+              class="form-control" 
+              id="reason" 
+              rows="3" 
+              v-model="formData.reason"
+            ></textarea>
+          </div>
         </form>
       </div>
     </div>
@@ -63,12 +75,15 @@
 <script setup>
 import { reactive } from 'vue'
 
+
 const formData = reactive({
   username: '',
   password: '',
   isAustralian: false,
-  gender: ''
+  gender: '',
+  reason: ''
 })
+
 
 function submitForm() {
   console.log(formData)
@@ -76,4 +91,5 @@ function submitForm() {
 </script>
 
 <style scoped>
+
 </style>
