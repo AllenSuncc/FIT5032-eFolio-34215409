@@ -66,6 +66,18 @@
               v-model="formData.reason"
             ></textarea>
           </div>
+
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+            <button 
+              type="button" 
+              class="btn btn-secondary" 
+              @click="clearForm"
+            >
+              Clear
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -86,7 +98,16 @@ const formData = reactive({
 
 
 function submitForm() {
-  console.log(formData)
+  console.log('Form Submitted:', formData)
+}
+
+
+function clearForm() {
+  formData.username = ''
+  formData.password = ''
+  formData.isAustralian = false
+  formData.gender = ''
+  formData.reason = ''
 }
 </script>
 
