@@ -5,6 +5,7 @@
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
+            <!-- Username -->
             <div class="col-md-6">
               <label for="username" class="form-label">Username</label>
               <input 
@@ -12,6 +13,17 @@
                 class="form-control" 
                 id="username" 
                 v-model="formData.username"
+              >
+            </div>
+
+            <!-- Password -->
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                v-model="formData.password"
               >
             </div>
           </div>
@@ -24,9 +36,9 @@
 <script setup>
 import { reactive } from 'vue'
 
-
 const formData = reactive({
-  username: ''
+  username: '',
+  password: ''
 })
 
 
