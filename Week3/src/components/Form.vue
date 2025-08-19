@@ -4,6 +4,7 @@
       <div class="col-md-8 offset-md-2">
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
+
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="username" class="form-label">Username</label>
@@ -39,6 +40,19 @@
                 </label>
               </div>
             </div>
+            <div class="col-md-6">
+              <label for="gender" class="form-label">Gender</label>
+              <select 
+                class="form-select" 
+                id="gender" 
+                v-model="formData.gender"
+              >
+                <option disabled value="">Please select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
           </div>
         </form>
       </div>
@@ -52,7 +66,8 @@ import { reactive } from 'vue'
 const formData = reactive({
   username: '',
   password: '',
-  isAustralian: false
+  isAustralian: false,
+  gender: ''
 })
 
 function submitForm() {
@@ -61,5 +76,4 @@ function submitForm() {
 </script>
 
 <style scoped>
-
 </style>
