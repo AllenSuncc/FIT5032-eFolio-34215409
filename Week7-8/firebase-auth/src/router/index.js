@@ -4,7 +4,7 @@ import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import HomePage from '../views/HomePage.vue'
 import AdminPage from '../views/AdminPage.vue'
 import UserPage from '../views/UserPage.vue'
-import AddBookView from '../views/AddBookView.vue';
+import AddBookView from '../views/AddBookView.vue'
 
 const routes = [
   {
