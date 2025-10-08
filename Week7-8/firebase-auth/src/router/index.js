@@ -5,6 +5,7 @@ import HomePage from '../views/HomePage.vue'
 import AdminPage from '../views/AdminPage.vue'
 import UserPage from '../views/UserPage.vue'
 import AddBookView from '../views/AddBookView.vue'
+import GetBookCountView from '@/views/GetBookCountView.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/addbook',
     name: 'AddBook',
     component: AddBookView
+  },
+  {
+    path: '/getbookcount',
+    name: 'GetBookCount',
+    component: GetBookCountView
   }
 ]
 

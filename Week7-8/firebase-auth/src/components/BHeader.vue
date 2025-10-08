@@ -9,6 +9,8 @@
         <router-link to="/register" class="nav-item" active-class="active">Register</router-link>
         <router-link to="/signin" class="nav-item" active-class="active">Sign In</router-link>
         <router-link to="/addbook" class="nav-item" active-class="active">Add Book</router-link>
+        <!-- ✅ 新增 Get Book Count 链接 -->
+        <router-link to="/GetBookCount" class="nav-item" active-class="active">Get Book Count</router-link>
       </nav>
     </div>
   </header>
@@ -33,7 +35,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #facc15; 
+  color: #facc15;
   text-decoration: none;
   transition: transform 0.2s ease;
 }
@@ -47,7 +49,7 @@
 }
 
 .nav-item {
-  color: #e2e8f0; 
+  color: #e2e8f0;
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
