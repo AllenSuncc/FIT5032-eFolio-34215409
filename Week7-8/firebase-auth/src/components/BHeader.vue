@@ -11,6 +11,9 @@
         <router-link to="/addbook" class="nav-item" active-class="active">Add Book</router-link>
         <!-- ✅ 新增 Get Book Count 链接 -->
         <router-link to="/GetBookCount" class="nav-item" active-class="active">Get Book Count</router-link>
+        <router-link to="/WeatherCheck" class="nav-item" active-class="active">Weather Check</router-link>
+        <router-link to="/CountBookAPI" class="nav-item" active-class="active">Count Book API</router-link>
+        <router-link to="/GetAllBookAPI" class="nav-item" active-class="active">Get All Book API</router-link>
       </nav>
     </div>
   </header>
