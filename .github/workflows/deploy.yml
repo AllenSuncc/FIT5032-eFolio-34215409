@@ -19,16 +19,18 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
+      working-directory: Week7-8/firebase-auth
       run: npm install
 
     - name: Build
+      working-directory: Week7-8/firebase-auth
       run: npm run build
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: gh-pages
-        folder: dist
+        folder: Week7-8/firebase-auth/dist
 
 permissions:
   contents: write
