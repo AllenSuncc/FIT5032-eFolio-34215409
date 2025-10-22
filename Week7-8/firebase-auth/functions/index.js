@@ -69,7 +69,6 @@ exports.getAllBooks = onRequest((req, res) => {
       const db = admin.firestore();
       const snapshot = await db.collection("books").get();
 
-      // 把所有书籍数据整理为数组
       const books = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),

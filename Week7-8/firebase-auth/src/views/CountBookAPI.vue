@@ -2,13 +2,11 @@
   <div id="app" class="book-api-container">
     <h1>Book Count API</h1>
 
-    <!-- 如果有数据则展示 -->
     <div v-if="jsondata">
       <h3>JSON Response:</h3>
       <pre>{{ jsondata }}</pre>
     </div>
 
-    <!-- 如果有错误则展示 -->
     <p v-if="error" class="error-text">
       {{ error }}
     </p>
@@ -22,8 +20,8 @@ export default {
   name: "CountBookAPI",
   data() {
     return {
-      jsondata: null, // 存放 JSON 数据
-      error: null, // 错误信息
+      jsondata: null, 
+      error: null, 
     };
   },
   methods: {
@@ -33,7 +31,6 @@ export default {
           "https://countbooks-5nsrwo4sta-uc.a.run.app"
         );
 
-        // 保存返回的 JSON 数据
         this.jsondata = response.data;
         this.error = null;
       } catch (error) {
@@ -44,7 +41,6 @@ export default {
     },
   },
   mounted() {
-    // 页面加载时自动调用 API
     this.getBookCountAPI();
   },
 };

@@ -22,14 +22,13 @@ export default {
   name: "GetAllBookAPI",
   data() {
     return {
-      jsondata: null, // 存放 JSON 数据
-      error: null, // 错误信息
+      jsondata: null, 
+      error: null, 
     };
   },
   methods: {
     async getAllBookAPI() {
       try {
-        // 👇 替换为你自己的云函数 URL
         const response = await axios.get("https://us-central1-week9-haojun.cloudfunctions.net/getAllBooks");
         this.jsondata = response.data;
         this.error = null;
@@ -41,7 +40,6 @@ export default {
     },
   },
   mounted() {
-    // 页面加载时自动调用 API
     this.getAllBookAPI();
   },
 };
